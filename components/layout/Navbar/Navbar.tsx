@@ -10,9 +10,17 @@ const navItems = [
 ];
 
 const navIcons = [
-  { icon: "/icons/github.svg", alt: "githun" },
-  { icon: "/icons/linkedin.svg", alt: "linkedin" },
-  { icon: "/icons/github.svg", alt: "" },
+  {
+    icon: "/icons/github.svg",
+    link: "",
+    alt: "githun",
+  },
+  {
+    icon: "/icons/linkedin.svg",
+    link: "https://www.linkedin.com/in/aliraza7806/",
+    alt: "linkedin",
+  },
+  { icon: "/icons/github.svg", link: "", alt: "" },
 ];
 
 const Navbar = () => {
@@ -46,13 +54,15 @@ const Navbar = () => {
         <div className="hidden base:flex items-center gap-[31px]">
           {navIcons.map((item, index) => {
             return (
-              <Image
-                key={"navIcons" + index}
-                src={item.icon}
-                width={28}
-                height={28}
-                alt={item.alt}
-              />
+              <Link href={item.link} target="_blank">
+                <Image
+                  key={"navIcons" + index}
+                  src={item.icon}
+                  width={28}
+                  height={28}
+                  alt={item.alt}
+                />
+              </Link>
             );
           })}
         </div>
@@ -86,13 +96,15 @@ const Navbar = () => {
           <div className="flex items-center gap-[31px]">
             {navIcons.map((item, index) => {
               return (
-                <Image
-                  key={"navIcons" + index}
-                  src={item.icon}
-                  width={20}
-                  height={20}
-                  alt={item.alt}
-                />
+                <Link href={item.link} target="_blank">
+                  <Image
+                    key={"navIcons" + index}
+                    src={item.icon}
+                    width={20}
+                    height={20}
+                    alt={item.alt}
+                  />
+                </Link>
               );
             })}
           </div>
