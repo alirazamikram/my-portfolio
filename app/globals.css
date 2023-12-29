@@ -2,11 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300&family=Nunito+Sans:wght@200;300&family=Poppins:wght@400;600&display=swap');
+/* ----------------Montserrat font link ------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300&family=Montserrat:wght@300&family=Nunito+Sans:wght@200;300&family=Poppins:wght@400;600&display=swap');
+
 
 /* --------------------------Main Container for overall website------------------------- */
 .mainContainer {
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 20px;
+    padding-right: 20px;
     max-width: 2050px;
     margin: auto;
+}
+
+
+@media (min-width:1920px) {
+    .mainContainer {
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+}
+
+@media (min-width:1440px) {
+    .mainContainer {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+
+@media (min-width:768px) {
+    .mainContainer {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}
+
+
+/* -----------------------------Responsive Navbar Animation------------------------- */
+
+.navBarAnimation {
+    animation: animate 0.5s ease-in-out;
+}
+
+@keyframes animate {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 73px;
+    }
 }
