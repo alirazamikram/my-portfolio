@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import React from "react";
 export default function Home() {
   return (
-    <div className="bg-primary font-poppins ">
+    <div className="bg-primary font-montserrat ">
       <Navbar />
       <HeaderSection />
       <ProjectSection />
