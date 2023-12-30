@@ -13,6 +13,21 @@ const ProjectSection = () => {
           title="ONEWAYX.COM"
           description="This is a onewayx website. I have worked on this project some days ago.You can see this project with animations. I have done this project only 30 days and delivered to the client. You can visit this website through clicking on this button below.Thank you."
         />
+        <ProjectCard
+          video="/videos/onewayx.mp4"
+          title="ONEWAYX.COM"
+          description="This is a onewayx website. I have worked on this project some days ago.You can see this project with animations. I have done this project only 30 days and delivered to the client. You can visit this website through clicking on this button below.Thank you."
+        />
+        <ProjectCard
+          video="/videos/onewayx.mp4"
+          title="ONEWAYX.COM"
+          description="This is a onewayx website. I have worked on this project some days ago.You can see this project with animations. I have done this project only 30 days and delivered to the client. You can visit this website through clicking on this button below.Thank you."
+        />
+        <ProjectCard
+          video="/videos/onewayx.mp4"
+          title="ONEWAYX.COM"
+          description="This is a onewayx website. I have worked on this project some days ago.You can see this project with animations. I have done this project only 30 days and delivered to the client. You can visit this website through clicking on this button below.Thank you."
+        />
       </div>
     </div>
   );
