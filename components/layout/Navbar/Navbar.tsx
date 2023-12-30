@@ -2,17 +2,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 const navItems = [
-  { title: "Projects" },
-  { title: "Technologies" },
-  { title: "About me" },
+  { title: "Projects", link: "" },
+  { title: "Technologies", link: "" },
+  { title: "About me", link: "" },
 ];
 
 const navIcons = [
   {
     icon: "/icons/github.svg",
-    link: "",
+    link: "https://github.com/alirazamikram",
     alt: "githun",
   },
   {
@@ -20,10 +19,11 @@ const navIcons = [
     link: "https://www.linkedin.com/in/aliraza7806/",
     alt: "linkedin",
   },
-  { icon: "/icons/github.svg", link: "", alt: "" },
+  { icon: "/icons/whatsapp.svg", link: "http://wa.me/+923268740798", alt: "" },
 ];
 
 const Navbar = () => {
+  const [activeTab, setActiveTab] = useState("");
   const [openNav, setOpenNav] = useState(false);
   return (
     <>
@@ -42,9 +42,14 @@ const Navbar = () => {
           {navItems.map((item, index) => {
             return (
               <Link
-                href={"/"}
+                href={item.link}
                 key={"navItems" + index}
-                className="text-lg font-medium text-white"
+                className={`text-lg font-medium ${
+                  activeTab === item.title
+                    ? "text-white opacity-100"
+                    : "text-white opacity-60"
+                } `}
+                onClick={() => setActiveTab(item.title)}
               >
                 {item.title}
               </Link>
@@ -61,6 +66,7 @@ const Navbar = () => {
                   width={28}
                   height={28}
                   alt={item.alt}
+                  className="opacity-80 hover:opacity-100"
                 />
               </Link>
             );
@@ -86,7 +92,12 @@ const Navbar = () => {
                 <Link
                   href={"/"}
                   key={"navItems" + index}
-                  className="text-lg font-medium text-white  "
+                  className={`text-lg font-medium ${
+                    activeTab === item.title
+                      ? "text-white opacity-100"
+                      : "text-white opacity-50"
+                  } `}
+                  onClick={() => setActiveTab(item.title)}
                 >
                   {item.title}
                 </Link>
