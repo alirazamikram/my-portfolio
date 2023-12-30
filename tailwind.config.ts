@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      fold: "380px",
       mob: "600px",
       tab: "768px",
       base: "1024px",
