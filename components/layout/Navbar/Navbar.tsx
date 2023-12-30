@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className="hidden base:flex items-center gap-[31px]">
           {navIcons.map((item, index) => {
             return (
-              <Link href={item.link} target="_blank">
+              <Link key={"navIcons" + index} href={item.link} target="_blank">
                 <Image
                   key={"navIcons" + index}
                   src={item.icon}
@@ -107,7 +107,7 @@ const Navbar = () => {
           <div className="flex items-center gap-[31px]">
             {navIcons.map((item, index) => {
               return (
-                <Link href={item.link} target="_blank">
+                <Link key={"navIcons" + index} href={item.link} target="_blank">
                   <Image
                     key={"navIcons" + index}
                     src={item.icon}
