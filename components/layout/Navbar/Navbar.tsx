@@ -92,12 +92,7 @@ const Navbar = () => {
                 <Link
                   href={"/"}
                   key={"navItems" + index}
-                  className={`text-lg font-medium ${
-                    activeTab === item.title
-                      ? "text-white opacity-100"
-                      : "text-white opacity-50"
-                  } `}
-                  onClick={() => setActiveTab(item.title)}
+                  className={`text-lg font-medium text-white`}
                 >
                   {item.title}
                 </Link>

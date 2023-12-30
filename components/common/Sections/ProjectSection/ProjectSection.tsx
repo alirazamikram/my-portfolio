@@ -3,7 +3,7 @@ import ProjectCard from "../../Cards/ProjectCard";
 
 const ProjectSection = () => {
   return (
-    <div className="pb-10 mainContainer">
+    <div className="mainContainer">
       <h3 className="text-[36px] font-semibold text-white pb-10 tab:pb-[93px] ">
         Projects
       </h3>
