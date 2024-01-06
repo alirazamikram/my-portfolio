@@ -12,7 +12,7 @@ export type ProjectCardProps = {
 const ProjectCard = ({ video, title, description, link }: ProjectCardProps) => {
   return (
     <div
-      className="flex flex-col items-center gap-[25px] w-full min-h-[600px] h-auto bg-[#0F1624] rounded-[20px] p-[25px_25px_45px_25px] shadow-[0px_0px_12px_0px_#FFF]
+      className="flex flex-col items-center gap-[25px] w-full min-h-[735px] h-auto bg-[#0F1624] rounded-[20px] p-[25px_25px_45px_25px] shadow-[0px_0px_12px_0px_#FFF]
     "
     >
       <video autoPlay loop muted className="w-full h-auto rounded-[10px] ">

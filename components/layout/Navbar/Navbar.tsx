@@ -33,7 +33,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
   const [openNav, setOpenNav] = useState(false);
   return (
     <>
-      <div className="relative z-[110] w-full h-[70px] base:h-[100px] flex justify-between items-center bg-primary mainContainer">
+      <div className="fixed z-[110] w-full h-[70px] base:h-[100px] flex justify-between items-center bg-primary mainContainer">
         <div className="flex items-center gap-3">
           <Image
             src={"/images/aliraza.png"}
@@ -59,7 +59,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                 }
                 spy={true}
                 smooth={true}
-                offset={-20}
+                offset={-100}
                 duration={500}
                 key={"navItems" + index}
                 className={`text-lg font-medium cursor-pointer ${
@@ -67,7 +67,10 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                     ? "text-white opacity-100"
                     : "text-white opacity-60"
                 } `}
-                onClick={() => setActiveTab(item.title)}
+                onClick={() => {
+                  setActiveTab(item.title);
+                  setOpenNav(false);
+                }}
               >
                 {item.title}
               </ScrollLink>
@@ -103,7 +106,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
       </div>
       {/* -------------------Responsive Navbar---------------------- */}
       {openNav && (
-        <div className=" absolute top-[70px] z-[100] w-full h-screen bg-[#1c2841] p-[40px_20px] flex base:hidden flex-col justify-start items-center gap-10 navBarAnimation ">
+        <div className=" fixed top-[70px] z-[100] w-full h-screen bg-[#1c2841] p-[40px_20px] flex base:hidden flex-col justify-start items-center gap-10 navBarAnimation ">
           <div className="flex flex-col items-center gap-10">
             {navItems.map((item, index) => {
               return (
@@ -119,9 +122,13 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                   }
                   spy={true}
                   smooth={true}
-                  offset={-20}
+                  offset={-90}
                   duration={500}
                   key={"navItems" + index}
+                  onClick={() => {
+                    setActiveTab(item.title);
+                    setOpenNav(false);
+                  }}
                   className={`text-lg font-medium cursor-pointer ${
                     activeTab === item.title
                       ? "text-white opacity-100"
