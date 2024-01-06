@@ -36,9 +36,16 @@ const textData = [
     name: "API Integration",
   },
 ];
-const TechnologiesSection = () => {
+
+export type TechnologiesSectionProps = {
+  id?: string;
+};
+const TechnologiesSection = ({ id }: TechnologiesSectionProps) => {
   return (
-    <div className="w-full h-auto pt-[50px] tab:pt-[100px] pb-[50px] tab:pb-[100px] mainContainer ">
+    <div
+      className="w-full h-auto pb-[50px] tab:pb-[100px] mainContainer "
+      id={id}
+    >
       <h3 className="w-full text-[36px] font-semibold text-white pb-10 tab:pb-[93px] ">
         Technologies
       </h3>

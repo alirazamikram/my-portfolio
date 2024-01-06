@@ -1,10 +1,16 @@
 import Image from "next/image";
 import React from "react";
 import AboutCard from "../../Cards/AboutCard";
+export type AboutSectionProps = {
+  id?: string;
+};
 
-const AboutSection = () => {
+const AboutSection = ({ id }: AboutSectionProps) => {
   return (
-    <div className="w-full h-auto  pb-[50px] tab:pb-[100px] mainContainer ">
+    <div
+      className="w-full h-auto  pb-[50px] tab:pb-[100px] mainContainer "
+      id={id}
+    >
       <h3 className="w-full text-[36px] font-semibold text-white pb-10 tab:pb-[87px] ">
         About me
       </h3>

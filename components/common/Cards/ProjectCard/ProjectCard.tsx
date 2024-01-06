@@ -6,9 +6,10 @@ export type ProjectCardProps = {
   video?: string;
   title?: string;
   description?: string;
+  link: string;
 };
 
-const ProjectCard = ({ video, title, description }: ProjectCardProps) => {
+const ProjectCard = ({ video, title, description, link }: ProjectCardProps) => {
   return (
     <div
       className="flex flex-col items-center gap-[25px] w-full min-h-[600px] h-auto bg-[#0F1624] rounded-[20px] p-[25px_25px_45px_25px] shadow-[0px_0px_12px_0px_#FFF]
@@ -27,7 +28,7 @@ const ProjectCard = ({ video, title, description }: ProjectCardProps) => {
         type="button"
         className="w-[180px] h-[50px] rounded-[84px] bg-gradient-to-r from-teal-500 via-indigo-500 to-purple-500 text-lg font-medium text-white mt-[41px] "
       >
-        <Link href={"https://onewayx.com/"} target="_blank">
+        <Link href={link} target="_blank">
           Visit now
         </Link>
       </button>

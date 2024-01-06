@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { Link as ScrollLink, scroll } from "react-scroll";
 import Link from "next/link";
+
 const navItems = [
   { title: "Projects", link: "" },
   { title: "Technologies", link: "" },
@@ -21,8 +23,12 @@ const navIcons = [
   },
   { icon: "/icons/whatsapp.svg", link: "http://wa.me/+923268740798", alt: "" },
 ];
-
-const Navbar = () => {
+export type NavbarProps = {
+  ProjectLink?: string;
+  technologyLink?: string;
+  aboutMeLink?: string;
+};
+const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
   const [activeTab, setActiveTab] = useState("");
   const [openNav, setOpenNav] = useState(false);
   return (
@@ -41,10 +47,22 @@ const Navbar = () => {
         <div className="hidden base:flex items-center gap-10  ">
           {navItems.map((item, index) => {
             return (
-              <Link
-                href={item.link}
+              <ScrollLink
+                to={
+                  index === 0
+                    ? ProjectLink
+                    : index === 1
+                    ? technologyLink
+                    : index === 2
+                    ? aboutMeLink
+                    : null
+                }
+                spy={true}
+                smooth={true}
+                offset={-20}
+                duration={500}
                 key={"navItems" + index}
-                className={`text-lg font-medium ${
+                className={`text-lg font-medium cursor-pointer ${
                   activeTab === item.title
                     ? "text-white opacity-100"
                     : "text-white opacity-60"
@@ -52,7 +70,7 @@ const Navbar = () => {
                 onClick={() => setActiveTab(item.title)}
               >
                 {item.title}
-              </Link>
+              </ScrollLink>
             );
           })}
         </div>
@@ -85,17 +103,33 @@ const Navbar = () => {
       </div>
       {/* -------------------Responsive Navbar---------------------- */}
       {openNav && (
-        <div className="absolute top-[70px] z-[100] w-full h-screen bg-[#1c2841] p-[40px_20px] flex flex-col justify-start items-center gap-10 navBarAnimation ">
+        <div className=" absolute top-[70px] z-[100] w-full h-screen bg-[#1c2841] p-[40px_20px] flex base:hidden flex-col justify-start items-center gap-10 navBarAnimation ">
           <div className="flex flex-col items-center gap-10">
             {navItems.map((item, index) => {
               return (
-                <Link
-                  href={"/"}
+                <ScrollLink
+                  to={
+                    index === 0
+                      ? ProjectLink
+                      : index === 1
+                      ? technologyLink
+                      : index === 2
+                      ? aboutMeLink
+                      : null
+                  }
+                  spy={true}
+                  smooth={true}
+                  offset={-20}
+                  duration={500}
                   key={"navItems" + index}
-                  className={`text-lg font-medium text-white`}
+                  className={`text-lg font-medium cursor-pointer ${
+                    activeTab === item.title
+                      ? "text-white opacity-100"
+                      : "text-white opacity-60"
+                  } `}
                 >
                   {item.title}
-                </Link>
+                </ScrollLink>
               );
             })}
           </div>
