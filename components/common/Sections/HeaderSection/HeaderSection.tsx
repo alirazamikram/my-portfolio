@@ -1,8 +1,15 @@
 import React from "react";
 
-const HeaderSection = () => {
+export type HeaderSectionPros = {
+  id?: string;
+};
+
+const HeaderSection = ({ id }: HeaderSectionPros) => {
   return (
-    <div className="w-full min-h-[700px] h-auto pt-[30px] tab:pt-[100px] pb-[50px] tab:pb-[100px] relative z-10 flex flex-col justify-center gap-y-8 bg-[url(/icons/box-pic.svg)] bg-no-repeat bg-contain bg-right mainContainer ">
+    <div
+      className="w-full min-h-[700px] h-auto pt-[30px] tab:pt-[100px] pb-[50px] tab:pb-[100px] relative z-10 flex flex-col justify-center gap-y-8 bg-[url(/icons/box-pic.svg)] bg-no-repeat bg-contain bg-right mainContainer "
+      id={id}
+    >
       <h3 className="max-w-[600px]  text-3xl font-medium text-white  ">
         React and Next.js Frontend Web Developer
       </h3>
