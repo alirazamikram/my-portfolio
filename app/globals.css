@@ -5,6 +5,18 @@
 /* ----------------Montserrat font link ------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300&family=Montserrat:wght@300&family=Nunito+Sans:wght@200;300&family=Poppins:wght@400;600&display=swap');
 
+/* ---------------------Navbar hero section class -------------- */
+@media (min-width:1024px) {
+    .backgroundPositionY {
+        background-position-y: 100px !important;
+    }
+}
+
+@media (max-width:1023px) {
+    .backgroundPositionY {
+        background-position-y: 70px !important;
+    }
+}
 
 /* --------------------------Main Container for overall website------------------------- */
 .mainContainer {

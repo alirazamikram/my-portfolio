@@ -33,7 +33,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
   const [openNav, setOpenNav] = useState(false);
   return (
     <>
-      <div className="fixed z-[110] w-full h-[70px] base:h-[100px] flex justify-between items-center bg-primary mainContainer">
+      <div className="fixed left-1/2 transform -translate-x-1/2 z-[110] w-full h-[70px] base:h-[100px] flex justify-between items-center bg-primary mainContainer">
         <div className="flex items-center gap-3">
           <Image
             src={"/images/aliraza.png"}
