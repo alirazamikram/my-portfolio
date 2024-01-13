@@ -48,6 +48,69 @@
     }
 }
 
+/* ------------------navbar light and dark color animation--------------------- */
+
+.navLightColor {
+    background-color: #f0f0f0 !important;
+    animation: colorLightAnimate 0.5s ease-in-out;
+}
+
+@keyframes colorLightAnimate {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.navDarkColor {
+    background-color: #0F1624 !important;
+    animation: colorDarkAnimate 0.5s ease-in-out;
+}
+
+@keyframes colorDarkAnimate {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+
+
+.lightColor {
+    background-color: white !important;
+    animation: lightColorAnimate 0.5s ease-in-out;
+}
+
+@keyframes lightColorAnimate {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.darkColor {
+    background-color: #0F1624 !important;
+    animation: darkColorAnimate 0.5s ease-in-out;
+}
+
+@keyframes darkColorAnimate {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
 
 /* -----------------------------Responsive Navbar Animation------------------------- */
 
@@ -64,6 +127,7 @@
         top: 73px;
     }
 }
+
 
 
 

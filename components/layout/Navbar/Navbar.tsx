@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Link as ScrollLink, scroll } from "react-scroll";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
 
 const navItems = [
   { title: "Projects", link: "" },
@@ -13,36 +14,64 @@ const navItems = [
 const navIcons = [
   {
     icon: "/icons/github.svg",
+    lightIcon: "/icons/github-light.svg",
     link: "https://github.com/alirazamikram",
     alt: "githun",
   },
   {
     icon: "/icons/linkedin.svg",
+    lightIcon: "/icons/linkedin-light.svg",
     link: "https://www.linkedin.com/in/aliraza7806/",
     alt: "linkedin",
   },
-  { icon: "/icons/whatsapp.svg", link: "http://wa.me/+923268740798", alt: "" },
+  {
+    icon: "/icons/whatsapp.svg",
+    lightIcon: "/icons/whatsapp-light.svg",
+    link: "http://wa.me/+923268740798",
+    alt: "",
+  },
 ];
 export type NavbarProps = {
   ProjectLink?: string;
   technologyLink?: string;
   aboutMeLink?: string;
 };
+interface ThemeState {
+  mode: "dark" | "light";
+}
 const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
   const [activeTab, setActiveTab] = useState("");
   const [openNav, setOpenNav] = useState(false);
+  const dispatch = useDispatch();
+  const theme = useSelector((state: ThemeState) => state.mode);
+
+  const toggleTheme = () => {
+    dispatch({ type: "TOGGLE_THEME" });
+  };
   return (
     <>
-      <div className="fixed left-1/2 transform -translate-x-1/2 z-[110] w-full h-[70px] base:h-[100px] flex justify-between items-center bg-primary mainContainer">
+      <div
+        className={`fixed left-1/2 transform -translate-x-1/2 z-[110] w-full h-[70px] base:h-[100px] flex justify-between items-center ${
+          theme === "dark" ? "navDarkColor" : "navLightColor"
+        }  mainContainer`}
+      >
         <div className="flex items-center gap-3">
           <Image
             src={"/images/aliraza.png"}
             width={47}
             height={47}
             alt="aliraza-img"
-            className="border border-white rounded-[50%] "
+            className={`border ${
+              theme === "dark" ? "border-white" : "border-black "
+            } rounded-[50%]`}
           />
-          <p className="text-white text-lg font-medium  ">Ali Raza</p>
+          <p
+            className={`${
+              theme === "dark" ? "text-white" : "text-black "
+            }  text-lg font-medium `}
+          >
+            Ali Raza
+          </p>
         </div>
         <div className="hidden base:flex items-center gap-10  ">
           {navItems.map((item, index) => {
@@ -64,8 +93,12 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                 key={"navItems" + index}
                 className={`text-lg font-medium cursor-pointer ${
                   activeTab === item.title
-                    ? "text-white opacity-100"
-                    : "text-white opacity-60"
+                    ? theme === "dark"
+                      ? "text-white opacity-100"
+                      : "text-black opacity-100 "
+                    : theme === "dark"
+                    ? "text-white opacity-60"
+                    : "text-black opacity-60 "
                 } `}
                 onClick={() => {
                   setActiveTab(item.title);
@@ -77,32 +110,75 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
             );
           })}
         </div>
-        <div className="hidden base:flex items-center gap-[31px]">
-          {navIcons.map((item, index) => {
-            return (
-              <Link key={"navIcons" + index} href={item.link} target="_blank">
-                <Image
-                  key={"navIcons" + index}
-                  src={item.icon}
-                  width={28}
-                  height={28}
-                  alt={item.alt}
-                  className="opacity-80 hover:opacity-100"
-                />
-              </Link>
-            );
-          })}
+        <div className="flex items-center gap-10">
+          <div className="hidden base:flex items-center gap-[31px]">
+            {navIcons.map((item, index) => {
+              return (
+                <Link key={"navIcons" + index} href={item.link} target="_blank">
+                  <Image
+                    key={"navIcons" + index}
+                    src={theme === "dark" ? item.icon : item.lightIcon}
+                    width={28}
+                    height={28}
+                    alt={item.alt}
+                    className="opacity-80 hover:opacity-100"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+          <div
+            className="hidden base:flex items-center gap-[10px] cursor-pointer"
+            onClick={toggleTheme}
+          >
+            <Image
+              src={theme === "dark" ? "/icons/sun.svg" : "/icons/moon-dark.svg"}
+              width={16}
+              height={16}
+              alt=""
+            />
+            <h3
+              className={`${
+                theme === "dark" ? "text-white" : "text-black  "
+              } text-sm font-medium`}
+            >
+              {theme === "dark" ? "Light" : "Dark "}
+            </h3>
+          </div>
         </div>
-
-        {/* -----------------------Responsive Navbar thumb bars -------------------- */}
-        <Image
-          src={openNav ? "/icons/close-nav.svg" : "/icons/bars.svg"}
-          width={24}
-          height={24}
-          alt="responsive-img"
-          className="block base:hidden"
-          onClick={() => setOpenNav(!openNav)}
-        />
+        {/* Responsive Navbar thumb bars -------------------- */}
+        <div className="flex base:hidden gap-5 ">
+          <div className="flex items-center gap-[10px]" onClick={toggleTheme}>
+            <Image
+              src={theme === "dark" ? "/icons/sun.svg" : "/icons/moon-dark.svg"}
+              width={16}
+              height={16}
+              alt=""
+            />
+            <h3
+              className={`${
+                theme === "dark" ? "text-white" : "text-black  "
+              } text-xs font-medium`}
+            >
+              {theme === "dark" ? "Light" : "Dark "}
+            </h3>
+          </div>
+          <Image
+            src={
+              openNav
+                ? theme === "dark"
+                  ? "/icons/close-nav.svg"
+                  : "/icons/close-nav-light.svg"
+                : theme === "dark"
+                ? "/icons/bars.svg"
+                : "/icons/bars-light.svg"
+            }
+            width={24}
+            height={24}
+            alt="responsive-img"
+            onClick={() => setOpenNav(!openNav)}
+          />
+        </div>
       </div>
       {/* -------------------Responsive Navbar---------------------- */}
       {openNav && (
@@ -146,7 +222,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                 <Link key={"navIcons" + index} href={item.link} target="_blank">
                   <Image
                     key={"navIcons" + index}
-                    src={item.icon}
+                    src={theme === "dark" ? item.icon : item.lightIcon}
                     width={20}
                     height={20}
                     alt={item.alt}
