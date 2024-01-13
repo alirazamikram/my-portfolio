@@ -5,11 +5,13 @@ import ProjectSection from "@/components/common/Sections/ProjectSection";
 import TechnologiesSection from "@/components/common/Sections/TechnologiesSection";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import store from "@/redux/store";
 import Head from "next/head";
 import React from "react";
+import { Provider } from "react-redux";
 export default function Home() {
   return (
-    <>
+    <Provider store={store}>
       <div className="bg-primary font-montserrat ">
         <Navbar
           ProjectLink={"projectSection"}
@@ -22,6 +24,6 @@ export default function Home() {
         <AboutSection id="aboutSection" />
         <Footer />
       </div>
-    </>
+    </Provider>
   );
 }
