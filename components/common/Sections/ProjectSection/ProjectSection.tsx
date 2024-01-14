@@ -1,14 +1,28 @@
 import React from "react";
 import ProjectCard from "../../Cards/ProjectCard";
+import { useSelector } from "react-redux";
 
 export type ProjectSectionProps = {
   id?: string;
 };
-
+interface ThemeState {
+  mode: "dark" | "light";
+}
 const ProjectSection = ({ id }: ProjectSectionProps) => {
+  const theme = useSelector((state: ThemeState) => state.mode);
+
   return (
-    <div className="pb-[50px] tab:pb-[100px] mainContainer" id={id}>
-      <h3 className="text-[36px] font-semibold text-white pb-10 tab:pb-[93px] ">
+    <div
+      className={`${
+        theme === "dark" ? "darkColor" : "lightColor"
+      } pb-[50px] tab:pb-[100px] mainContainer`}
+      id={id}
+    >
+      <h3
+        className={`text-[36px] font-semibold ${
+          theme === "dark" ? "text-white" : "text-black"
+        } pb-10 tab:pb-[93px] `}
+      >
         Projects
       </h3>
       <div className="w-full grid grid-cols-1 mob:grid-cols-2 base:grid-cols-3 xlarge:grid-cols-4 place-items-center justify-items-center gap-x-[30px] normal:gap-x-[45px] gap-y-[35px] normal:gap-y-[70px] ">

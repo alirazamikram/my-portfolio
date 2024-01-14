@@ -112,6 +112,36 @@
     }
 }
 
+.darkColorResponsiveNavbar {
+    background-color: #1c2841 !important;
+    animation: darkColorResponsiveNavAnimate 0.5s ease-in-out;
+}
+
+@keyframes darkColorResponsiveNavAnimate {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.graphLinelDarkColor {
+    background-color: #162950 !important;
+    animation: graphLineAnimate 0.5s ease-in-out;
+}
+
+@keyframes graphLineAnimate {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
 /* -----------------------------Responsive Navbar Animation------------------------- */
 
 .navBarAnimation {
