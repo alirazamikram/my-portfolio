@@ -55,7 +55,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
           theme === "dark" ? "navDarkColor" : "navLightColor"
         }  mainContainer`}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 cursor-pointer ">
           <Image
             src={"/images/aliraza.png"}
             width={47}
@@ -182,7 +182,11 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
       </div>
       {/* -------------------Responsive Navbar---------------------- */}
       {openNav && (
-        <div className=" fixed top-[70px] z-[100] w-full h-screen bg-[#1c2841] p-[40px_20px] flex base:hidden flex-col justify-start items-center gap-10 navBarAnimation ">
+        <div
+          className={`fixed top-[70px] z-[100] w-full h-screen ${
+            theme === "dark" ? "darkColorResponsiveNavbar" : "lightColor"
+          }  p-[40px_20px] flex base:hidden flex-col justify-start items-center gap-10 navBarAnimation `}
+        >
           <div className="flex flex-col items-center gap-10">
             {navItems.map((item, index) => {
               return (
@@ -207,8 +211,12 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                   }}
                   className={`text-lg font-medium cursor-pointer ${
                     activeTab === item.title
-                      ? "text-white opacity-100"
-                      : "text-white opacity-60"
+                      ? theme === "dark"
+                        ? "text-white opacity-100"
+                        : "text-black opacity-100 "
+                      : theme === "dark"
+                      ? "text-white opacity-60"
+                      : "text-black opacity-60 "
                   } `}
                 >
                   {item.title}
