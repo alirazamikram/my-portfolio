@@ -8,6 +8,9 @@ import TechnologiesSection from "@/components/common/Sections/TechnologiesSectio
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 
+export const projectSectionId = "projectSection";
+export const technologiesSection = "technologiesSection";
+export const aboutSection = "aboutSection";
 export default function Home() {
   return (
     <HomeWrapper>
