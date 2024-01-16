@@ -4,11 +4,7 @@ import Image from "next/image";
 import { Link as ScrollLink, scroll } from "react-scroll";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  projectSectionId,
-  technologiesSection,
-  aboutSection,
-} from "../../../app/page";
+import {projectSectionId,technologiesSection,aboutSection} from "../../../app/page";
 const navItems = [
   { title: "Projects", id: "projectSection", link: "" },
   { title: "Technologies", id: "technologiesSection", link: "" },
