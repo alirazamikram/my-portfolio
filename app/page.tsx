@@ -7,6 +7,7 @@ import ProjectSection from "@/components/common/Sections/ProjectSection";
 import TechnologiesSection from "@/components/common/Sections/TechnologiesSection";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import Head from "next/head";
 
 export const projectSectionId = "projectSection";
 export const technologiesSection = "technologiesSection";
@@ -14,6 +15,14 @@ export const aboutSection = "aboutSection";
 export default function Home() {
   return (
     <HomeWrapper>
+      <Head>
+        <head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+        </head>
+      </Head>
       <div className="bg-primary font-montserrat ">
         <Navbar
           ProjectLink={"projectSection"}
