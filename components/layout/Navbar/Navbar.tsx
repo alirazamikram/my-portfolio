@@ -5,10 +5,10 @@ import { Link as ScrollLink, scroll } from "react-scroll";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  projectSectionId,
+  projectSection,
   technologiesSection,
   aboutSection,
-} from "../../../app/page";
+} from "../../../components/Wrapper/HomeWrapper/HomeWrapper";
 const navItems = [
   { title: "Projects", id: "projectSection", link: "" },
   { title: "Technologies", id: "technologiesSection", link: "" },
@@ -56,7 +56,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
     const handleScroll = () => {
       const offset = 100;
 
-      const section1 = document.getElementById(projectSectionId);
+      const section1 = document.getElementById(projectSection);
       const section2 = document.getElementById(technologiesSection);
       const section3 = document.getElementById(aboutSection);
 
