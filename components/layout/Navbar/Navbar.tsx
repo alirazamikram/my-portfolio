@@ -1,14 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Link as ScrollLink, scroll } from "react-scroll";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-
+import {
+  projectSection,
+  technologiesSection,
+  aboutSection,
+} from "../../../components/Wrapper/HomeWrapper/HomeWrapper";
 const navItems = [
-  { title: "Projects", link: "" },
-  { title: "Technologies", link: "" },
-  { title: "About me", link: "" },
+  { title: "Projects", id: "projectSection", link: "" },
+  { title: "Technologies", id: "technologiesSection", link: "" },
+  { title: "About me", id: "aboutSection", link: "" },
 ];
 
 const navIcons = [
@@ -40,14 +44,57 @@ interface ThemeState {
   mode: "dark" | "light";
 }
 const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState<string | undefined>();
   const [openNav, setOpenNav] = useState(false);
   const dispatch = useDispatch();
   const theme = useSelector((state: ThemeState) => state.mode);
-
   const toggleTheme = () => {
     dispatch({ type: "TOGGLE_THEME" });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = 100;
+
+      const section1 = document.getElementById(projectSection);
+      const section2 = document.getElementById(technologiesSection);
+      const section3 = document.getElementById(aboutSection);
+
+      const scrollPosition = window.scrollY;
+
+      if (section1 !== null && scrollPosition < section1.offsetTop - offset) {
+        setActiveTab(undefined);
+      } else if (
+        section2 !== null &&
+        scrollPosition < section2.offsetTop - offset
+      ) {
+        setActiveTab(ProjectLink);
+      } else if (
+        section3 !== null &&
+        scrollPosition < section3.offsetTop - offset
+      ) {
+        setActiveTab(technologyLink);
+      } else if (
+        section3 !== null &&
+        scrollPosition >= section3.offsetTop - offset
+      ) {
+        setActiveTab(aboutMeLink);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [setActiveTab]);
+
+  useEffect(() => {
+    document.body.style.overflow = openNav ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [openNav]);
   return (
     <>
       <div
@@ -92,7 +139,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                 duration={500}
                 key={"navItems" + index}
                 className={`text-lg font-medium cursor-pointer ${
-                  activeTab === item.title
+                  activeTab === item.id
                     ? theme === "dark"
                       ? "text-white opacity-100"
                       : "text-black opacity-100 "
@@ -101,7 +148,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                     : "text-black opacity-60 "
                 } `}
                 onClick={() => {
-                  setActiveTab(item.title);
+                  setActiveTab(item.id);
                   setOpenNav(false);
                 }}
               >
@@ -206,11 +253,11 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                   duration={500}
                   key={"navItems" + index}
                   onClick={() => {
-                    setActiveTab(item.title);
+                    setActiveTab(item.id);
                     setOpenNav(false);
                   }}
                   className={`text-lg font-medium cursor-pointer ${
-                    activeTab === item.title
+                    activeTab === item.id
                       ? theme === "dark"
                         ? "text-white opacity-100"
                         : "text-black opacity-100 "
