@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LineCard from "../../Cards/LineCard";
 import { useSelector } from "react-redux";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const textData = [
   {
@@ -44,8 +46,19 @@ export type TechnologiesSectionProps = {
 interface ThemeState {
   mode: "dark" | "light";
 }
+
+const aosProps = {
+  "data-aos": "slide-right",
+  "data-aos-offset": "20",
+  "data-aos-easing": "ease-in-out",
+  "data-aos-duration": "500",
+};
+
 const TechnologiesSection = ({ id }: TechnologiesSectionProps) => {
   const theme = useSelector((state: ThemeState) => state.mode);
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <div
       className={`${
@@ -61,13 +74,17 @@ const TechnologiesSection = ({ id }: TechnologiesSectionProps) => {
         Technologies
       </h3>
       <div className="flex flex-col gap-10 ">
-        <LineCard title="HTML" skillLevel="w-[95%]" />
-        <LineCard title="CSS" skillLevel="w-[85%]" />
-        <LineCard title="JavaSript" skillLevel="w-[75%]" />
-        <LineCard title="TypeScript" skillLevel="w-[75%]" />
-        <LineCard title="React.js" skillLevel="w-[90%]" />
-        <LineCard title="Next.js" skillLevel="w-[95%]" />
-        <LineCard title="UI Design Figma" skillLevel="w-[90%]" />
+        <LineCard AOSProps={aosProps} title="HTML" skillLevel="w-[95%]" />
+        <LineCard AOSProps={aosProps} title="CSS" skillLevel="w-[85%]" />
+        <LineCard AOSProps={aosProps} title="JavaSript" skillLevel="w-[75%]" />
+        <LineCard AOSProps={aosProps} title="TypeScript" skillLevel="w-[75%]" />
+        <LineCard AOSProps={aosProps} title="React.js" skillLevel="w-[90%]" />
+        <LineCard AOSProps={aosProps} title="Next.js" skillLevel="w-[95%]" />
+        <LineCard
+          AOSProps={aosProps}
+          title="UI Design Figma"
+          skillLevel="w-[90%]"
+        />
       </div>
       <div className="mt-[50px] tab:mt-[100px]">
         <h3

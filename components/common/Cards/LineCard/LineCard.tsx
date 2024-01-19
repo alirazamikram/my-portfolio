@@ -1,14 +1,21 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useSelector } from "react-redux";
 
 export type LineCardProps = {
   title?: string;
   skillLevel?: string;
+  AOSProps: aosPropsType;
 };
+interface aosPropsType {
+  "data-aos": string;
+  "data-aos-offset": string;
+  "data-aos-easing": string;
+  "data-aos-duration": string;
+}
 interface ThemeState {
   mode: "dark" | "light";
 }
-const LineCard = ({ title, skillLevel }: LineCardProps) => {
+const LineCard = ({ title, skillLevel, AOSProps }: LineCardProps) => {
   const theme = useSelector((state: ThemeState) => state.mode);
 
   return (
@@ -26,8 +33,9 @@ const LineCard = ({ title, skillLevel }: LineCardProps) => {
         } overflow-hidden relative`}
       >
         <div
-          className={`${skillLevel} h-full rounded-[83px] bg-gradient-to-r from-teal-500 via-indigo-600 to-purple-600 absolute lineGraphAnimation`}
-        ></div>
+          {...AOSProps}
+          className={`${skillLevel} h-full rounded-[83px] bg-gradient-to-r from-teal-500 via-indigo-600 to-purple-600 absolute `}
+        />
       </div>
     </div>
   );
