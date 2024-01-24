@@ -135,7 +135,7 @@ const Navbar = ({ ProjectLink, technologyLink, aboutMeLink }: NavbarProps) => {
                 }
                 spy={true}
                 smooth={true}
-                offset={-100}
+                offset={-90}
                 duration={500}
                 key={"navItems" + index}
                 className={`text-lg font-medium cursor-pointer ${
