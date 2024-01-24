@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 interface ThemeState {
   mode: "dark" | "light";
 }
-const AboutCard = () => {
+
+export type AboutCardProps = {
+  text?: string;
+};
+const AboutCard = ({ text }: AboutCardProps) => {
   const theme = useSelector((state: ThemeState) => state.mode);
 
   return (
@@ -13,8 +17,7 @@ const AboutCard = () => {
           theme === "dark" ? "text-white" : "text-black"
         } text-center `}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        {text}
       </p>
     </div>
   );

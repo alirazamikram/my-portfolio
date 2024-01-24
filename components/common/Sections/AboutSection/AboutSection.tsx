@@ -32,16 +32,16 @@ const AboutSection = ({ id }: AboutSectionProps) => {
       <div className="w-[80%] m-auto hidden tab:block">
         <div className="w-full flex justify-between">
           <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>
-            2018
+            2017
           </p>
           <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>
-            2018
+            2021
           </p>
           <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>
-            2018
+            2022
           </p>
           <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>
-            2018
+            2024
           </p>
         </div>
         <Image
@@ -65,10 +65,10 @@ const AboutSection = ({ id }: AboutSectionProps) => {
           />
         </div>
         <div className="w-full grid grid-cols-1 tab:grid-cols-4">
-          <AboutCard />
-          <AboutCard />
-          <AboutCard />
-          <AboutCard />
+          <AboutCard text="I have passed my F.S.C in 2017 in Govt Emersson Universty of Multan." />
+          <AboutCard text="I have completed my degree in 2021 in Govt Emersson Universty Multan." />
+          <AboutCard text="I had started my internship in 2022 in Hasbi Soft software company." />
+          <AboutCard text="Now I'm working as a React and Next.js developer in TheHexaTown." />
         </div>
       </div>
     </div>
